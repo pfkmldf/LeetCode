@@ -1,3 +1,4 @@
+//此题的解法是依次遍历两个链表，用一个变量来记录是否上一次求和是否需要进位。到最后如果l1和l2都为空链表，就创建一个新的节点。
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
