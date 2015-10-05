@@ -1,0 +1,40 @@
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode* tail = new ListNode(1);
+        ListNode* cur = tail;
+        int temp = 0;
+        //记录是否有进位
+        int advance = 0;
+        while(l1 != nullptr || l2 != nullptr)
+        {
+            int val1 = 0;
+            int val2 = 0;
+
+            if(l1 != nullptr)
+            {
+                val1 = l1->val;
+                l1 = l1->next;
+            }
+            if(l2 != nullptr)
+            {
+                val2 = l2->val;
+                l2 = l2->next;
+            }
+            
+            temp = val1 + val2 + advance;
+            
+            ListNode* newNode = new ListNode(temp % 10);
+            advance = temp / 10;
+            cur->next = newNode;
+            cur = newNode;
+            
+        }
+        //判断到到最后一个
+        if(advance == 1)
+        {
+            cur->next = new ListNode(1);
+        }
+        return tail->next;
+    }
+};
